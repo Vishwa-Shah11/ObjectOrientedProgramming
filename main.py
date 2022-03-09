@@ -1,34 +1,24 @@
-class Triangle:
-    def __init__(self, a, b, c):
-        self.a = a
-        self.b = b
-        self.c = c
-        self.valid = False
+def is_function(domain, co_domain, fun):
+    flag = False
+    if all(i in fun.keys() for i in domain):
+    #for i in domain:
+        #if (i in fun.keys()):#have to check for every element. this is checking for any element
+            #print('in domain')
+            #continue #this is for checking every element, but solution not working!!
+        flag = True
+    if all(i in domain for i in fun.keys()):
+    #for j in fun.keys():
+        #if (j in domain):#have to check for every element. this is checking for any element
+            #print('IN fun.KEYS')
+            #continue
+        flag = True
+    if all(i in fun.values() for i in co_domain):
+    #for k in co_domain:
+        #if (k in fun.values()):#have to check for every element. this is checking for any element
+            #print('in CO_DOMAIN')
+            #continue
+        flag = True
 
-        if ((self.a + self.b <= self.c) or (self.b + self.c <= self.a) or (self.c + self.a <= self.b)):
-            self.valid = False
-        else:
-            self.valid = True
-        
-    def is_equilateral(self):
-        if (self.valid):
-            if (self.a == self.b == self.c):
-                return True
-            return False
-        
-    def is_isosceles(self):
-        if (self.valid):
-            if ((self.a == self.b or self.b == self.c or self.c == self.a) and (not self.is_equilateral())):
-                return True
-            return False
-        
-    def is_scalene(self):
-        if (self.valid):
-            if (self.a != self.b and self.b != self.c and self.c != self.a):
-                return True
-            return False
+    return flag
 
-obj = Triangle(1,2,3)
-print(obj.is_equilateral())
-print(obj.is_isosceles())
-print(obj.is_scalene())
+print(is_function([1,2,3], [5,6,7], {1:5, 2:6, 4:7}))
