@@ -1,18 +1,23 @@
-#str = input().split(',')
-str = 'one,two,order,real,long,tight,tree,cool,lot,trouble'
-my_lst = str.split(',')
-print(my_lst)
-count = 0
+seq= 'mango,orange,banana,atom,man,name,elastic,cough,hot'
+list_seq=seq.split(',')
+#print(list1)
 
-for i in my_lst:
-    next_word = my_lst[my_lst.index(i) + 1]
-    #print(next_word)
-    #print(i)
-    #print(i[-1])
-    #print(next_word[0])
-    #print(i)
-    #print(i, next_word)
-    if (i[-1] == next_word[0]):
-        count += 1
-print(count)
-   
+temp=''
+count=1
+list_count=[]
+for i in range (len(list_seq)):
+        current_temp=list_seq[i][0]
+        #print(current_temp)
+        print(current_temp,temp)
+        if(current_temp==temp):
+            count+=1
+        else:
+            list_count.append(count)
+            count=1
+        if(i==(len(list_seq)-1) and count!=1):
+           list_count.append(count)
+            
+        temp=list_seq[i][-1]
+
+
+print(max(list_count))
